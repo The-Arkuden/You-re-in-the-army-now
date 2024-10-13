@@ -7,12 +7,12 @@ body {
     padding: 0;
 }
 
-h1, h2, h3 {
+h2, h3 {
     color: #ffffff;
     margin-bottom: 20px;
 }
 
-#menu {
+#campaignMenu {
     margin: 50px auto;
 }
 
@@ -61,4 +61,8 @@ button:hover {
     font-family: 'Courier New', monospace;
     color: #ffffff;
     text-align: left;
+}
+
+#officiers pre {
+    color: #00ff00; /* Couleur verte pour l'esthétique rétro ASCII */
 }
