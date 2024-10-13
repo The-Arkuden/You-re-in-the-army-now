@@ -1,4 +1,4 @@
-/ Variables de campagne
+// Variables de campagne
 let moral = 5;
 let nombreHommes = 100;
 let officiers = [];
@@ -25,35 +25,36 @@ function afficherOfficiers() {
     officiers.forEach(officier => {
         officiersDiv.innerHTML += `<div>
             <h4>${officier.nom}</h4>
-            <img src="${officier.image}" alt="${officier.nom}">
-            <p>Nez: ${officier.nez}</p>
-            <p>Bouche: ${officier.bouche}</p>
-            <p>Coiffure: ${officier.coiffure}</p>
-            <p>Yeux: ${officier.yeux}</p>
-            <p>Oreilles: ${officier.oreilles}</p>
+            <pre>${officier.visage}</pre>
+            <p>Arme: ${officier.arme}</p>
         </div>`;
     });
 }
 
-// Fonction pour générer des officiers avec des caractéristiques aléatoires
+// Fonction pour générer des officiers avec des visages ASCII et des caractéristiques aléatoires
 function genererOfficiers(nombre) {
-    const caracteristiques = {
-        nez: ['Droit', 'Crochu', 'Plat'],
-        bouche: ['Fine', 'Large', 'Serrée'],
-        coiffure: ['Courte', 'Longue', 'Bald'],
-        yeux: ['Bleus', 'Verts', 'Marron'],
-        oreilles: ['Pointues', 'Rondes', 'Aplatées'],
+    const traitsVisage = {
+        yeux: ['o o', 'O O', '- -', 'x x'],
+        nez: [' | ', ' ^ ', ' v ', ' L '],
+        bouche: ['---', '_ _', '~~~', '---']
     };
+    
+    const armes = ['Épée', 'Lance', 'Arc'];
 
     for (let i = 0; i < nombre; i++) {
+        const yeux = traitsVisage.yeux[Math.floor(Math.random() * traitsVisage.yeux.length)];
+        const nez = traitsVisage.nez[Math.floor(Math.random() * traitsVisage.nez.length)];
+        const bouche = traitsVisage.bouche[Math.floor(Math.random() * traitsVisage.bouche.length)];
+
+        const visage = `
+        ${yeux}
+         ${nez}
+         ${bouche}`;
+
         officiers.push({
             nom: `Officier ${i + 1}`,
-            nez: caracteristiques.nez[Math.floor(Math.random() * 3)],
-            bouche: caracteristiques.bouche[Math.floor(Math.random() * 3)],
-            coiffure: caracteristiques.coiffure[Math.floor(Math.random() * 3)],
-            yeux: caracteristiques.yeux[Math.floor(Math.random() * 3)],
-            oreilles: caracteristiques.oreilles[Math.floor(Math.random() * 3)],
-            image: 'https://via.placeholder.com/100'  // Image par défaut (à remplacer par des images réelles)
+            visage: visage,
+            arme: armes[Math.floor(Math.random() * armes.length)]
         });
     }
 }
