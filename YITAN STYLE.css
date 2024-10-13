@@ -1,14 +1,14 @@
 body {
-    font-family: 'Georgia', serif;
-    background-color: #f2f2f2;
-    color: #333;
+    font-family: 'Courier New', monospace;
+    background-color: #1e1e1e;
+    color: #ffffff;
     text-align: center;
     margin: 0;
     padding: 0;
 }
 
 h1, h2, h3 {
-    color: #4B2D00; /* Couleur brune pour le texte principal */
+    color: #ffffff;
     margin-bottom: 20px;
 }
 
@@ -20,48 +20,45 @@ button {
     padding: 10px 20px;
     font-size: 16px;
     margin: 10px;
-    background-color: #8B5A2B; /* Brun clair pour le fond des boutons */
-    color: #ffffff; /* Couleur blanche pour le texte */
-    border: none;
-    border-radius: 5px;
+    background-color: #333;
+    color: #ffffff;
+    border: 1px solid #fff;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #6F4D3E; /* Brun plus foncé au survol */
+    background-color: #444;
 }
 
 .output {
-    background-color: #fff; /* Couleur blanche pour la console de jeu */
+    background-color: #2e2e2e;
     border-radius: 8px;
     padding: 20px;
     margin: 20px auto;
     width: 80%;
     height: 200px;
     overflow-y: scroll;
-    color: #333; /* Couleur sombre pour le texte */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 #officiers {
     display: flex;
     justify-content: space-around;
     margin-top: 20px;
-    flex-wrap: wrap; /* Permet de gérer les espaces restants */
+    flex-wrap: wrap;
 }
 
 #officiers div {
-    background-color: #fff; /* Blanc pour le fond des officiers */
-    border: 2px solid #4B2D00; /* Bordure brune */
+    background-color: #333;
+    border: 1px solid #555;
     border-radius: 8px;
     padding: 10px;
-    width: 200px; /* Largeur fixe pour chaque officier */
+    width: 220px;
     margin: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-#officiers img {
-    border-radius: 50%; /* Bordures arrondies pour les images */
-    margin-bottom: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-family: 'Courier New', monospace;
+    color: #ffffff;
+    text-align: left;
 }
