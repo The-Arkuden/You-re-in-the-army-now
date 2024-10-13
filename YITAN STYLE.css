@@ -1,130 +1,67 @@
-/* Style global */
 body {
-    font-family: 'Courier New', Courier, monospace;
-    background-color: #1a1a1a;
-    color: #e4e4e4;
+    font-family: 'Georgia', serif;
+    background-color: #f2f2f2;
+    color: #333;
+    text-align: center;
     margin: 0;
     padding: 0;
 }
 
-header {
-    background-color: #333;
-    color: #e4e4e4;
-    text-align: center;
-    padding: 20px;
-    border-bottom: 4px solid #4CAF50;
-    text-shadow: 1px 1px 2px #000;
-}
-
-/* Conteneur général */
-.container {
-    width: 90%;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #252525;
-    border: 4px solid #666;
-    border-radius: 8px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-    font-size: 18px;
-    max-width: 1200px;
-}
-
-.menu-buttons {
-    display: flex;
-    justify-content: center;
+h1, h2, h3 {
+    color: #4B2D00; /* Couleur brune pour le texte principal */
     margin-bottom: 20px;
 }
 
-.menu-buttons button {
-    padding: 15px 20px;
+#menu {
+    margin: 50px auto;
+}
+
+button {
+    padding: 10px 20px;
     font-size: 16px;
-    cursor: pointer;
-    background-color: #444;
-    color: #e4e4e4;
-    border: 3px solid #777;
-    border-radius: 5px;
     margin: 10px;
-    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.5);
-    font-family: 'Courier New', Courier, monospace;
-    text-shadow: 1px 1px 2px #000;
+    background-color: #8B5A2B; /* Brun clair pour le fond des boutons */
+    color: #ffffff; /* Couleur blanche pour le texte */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.menu-buttons button:hover {
-    background-color: #555;
-    border-color: #4CAF50;
+button:hover {
+    background-color: #6F4D3E; /* Brun plus foncé au survol */
 }
 
-.output, .battle-screen {
-    display: none;
-    background-color: #2e2e2e;
+.output {
+    background-color: #fff; /* Couleur blanche pour la console de jeu */
     border-radius: 8px;
     padding: 20px;
+    margin: 20px auto;
+    width: 80%;
     height: 200px;
     overflow-y: scroll;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 16px;
-    margin-bottom: 20px;
-    color: #b8b8b8;
-    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.7);
-    border: 3px solid #777;
-    text-shadow: 1px 1px 2px #000;
+    color: #333; /* Couleur sombre pour le texte */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
-.output p {
-    margin: 0;
-}
-
-/* Commandes de bataille */
-.order-buttons {
-    display: none;
+#officiers {
+    display: flex;
     justify-content: space-around;
-    margin-bottom: 20px;
-}
-
-.order-buttons button {
-    padding: 10px 15px;
-    font-size: 14px;
-    cursor: pointer;
-    background-color: #3d3d3d;
-    color: #e4e4e4;
-    border: 2px solid #777;
-    border-radius: 5px;
-    margin: 5px;
-    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.7);
-    text-shadow: 1px 1px 2px #000;
-}
-
-.order-buttons button:hover {
-    background-color: #555;
-    border-color: #4CAF50;
-}
-
-footer {
-    text-align: center;
     margin-top: 20px;
-    color: #777;
-    font-size: 14px;
+    flex-wrap: wrap; /* Permet de gérer les espaces restants */
 }
 
-footer a {
-    color: #4CAF50;
-    text-decoration: none;
+#officiers div {
+    background-color: #fff; /* Blanc pour le fond des officiers */
+    border: 2px solid #4B2D00; /* Bordure brune */
+    border-radius: 8px;
+    padding: 10px;
+    width: 200px; /* Largeur fixe pour chaque officier */
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-footer a:hover {
-    text-decoration: underline;
-}
-
-/* Scroll bar customisée */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: #555;
-    border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background-color: #4CAF50;
+#officiers img {
+    border-radius: 50%; /* Bordures arrondies pour les images */
+    margin-bottom: 10px;
 }
