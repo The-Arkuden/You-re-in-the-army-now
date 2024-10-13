@@ -3,28 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
     <title>You're in the Army Now!</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="game-container">
-        <h1>You're in the Army Now!</h1>
+    <div class="container">
+        <h1>Bataille!</h1>
         <div id="battlefield">
-            <pre id="battlefield-display"></pre>
+            <h2>Votre Armée</h2>
+            <div>
+                <strong>Infanterie :</strong>
+                <span id="player-infantry-units"></span> unités
+                <span id="player-infantry-morale"></span> moral
+            </div>
+            <!-- Ajoute d'autres escouades ici si nécessaire -->
+            <h2>Armée Ennemie</h2>
+            <div>
+                <strong>Infanterie :</strong>
+                <span id="enemy-infantry-units"></span> unités
+                <span id="enemy-infantry-morale"></span> moral
+            </div>
+            <!-- Ajoute d'autres escouades ici si nécessaire -->
         </div>
-        <div id="controls">
+        <div id="actions">
             <button id="attack-btn">Attaquer</button>
             <button id="defend-btn">Défendre</button>
             <button id="retreat-btn">Retraite</button>
-            <button id="next-turn-btn">Suivant</button>
-        </div>
-        <div id="status">
-            <h2>État de l'armée</h2>
-            <pre id="status-display"></pre>
+            <button id="next-turn-btn">Prochain Tour</button>
         </div>
         <div id="end-game" style="display: none;">
-            <h2>Fin de la bataille</h2>
-            <p id="result"></p>
+            <h2 id="result-display"></h2>
             <button id="restart-btn">Recommencer</button>
         </div>
     </div>
