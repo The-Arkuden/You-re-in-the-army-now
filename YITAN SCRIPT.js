@@ -1,137 +1,77 @@
-<script>
-    // Variables de campagne et état des batailles
-    let moralJoueur = 5;
-    let moralEnnemi = 5;
-    let batailleEnCours = 1;
-    let nombreBatailles = 3;  // La campagne comporte 3 batailles
+/ Variables de campagne
+let moral = 5;
+let nombreHommes = 100;
+let officiers = [];
 
-    // Fonction pour commencer la campagne militaire
-    function startCampaign() {
-        document.getElementById("menu").style.display = "none";
-        document.getElementById("battleScreen").style.display = "block";
-        document.getElementById("orderButtons").style.display = "flex";
-        afficher(`Bataille ${batailleEnCours} commencée !`);
+// Fonction pour commencer la campagne militaire
+function startCampaign() {
+    document.getElementById("menu").style.display = "none";
+    document.getElementById("campaignMenu").style.display = "block";
+    genererOfficiers(3);  // Génère 3 officiers au début
+    mettreAJourResume();
+}
+
+// Fonction pour mettre à jour le résumé
+function mettreAJourResume() {
+    document.getElementById("moral").innerText = `Moral : ${moral}`;
+    document.getElementById("nombreHommes").innerText = `Nombre d'hommes : ${nombreHommes}`;
+    afficherOfficiers();
+}
+
+// Fonction pour afficher les officiers
+function afficherOfficiers() {
+    const officiersDiv = document.getElementById("officiers");
+    officiersDiv.innerHTML = '';
+    officiers.forEach(officier => {
+        officiersDiv.innerHTML += `<div>
+            <h4>${officier.nom}</h4>
+            <img src="${officier.image}" alt="${officier.nom}">
+            <p>Nez: ${officier.nez}</p>
+            <p>Bouche: ${officier.bouche}</p>
+            <p>Coiffure: ${officier.coiffure}</p>
+            <p>Yeux: ${officier.yeux}</p>
+            <p>Oreilles: ${officier.oreilles}</p>
+        </div>`;
+    });
+}
+
+// Fonction pour générer des officiers avec des caractéristiques aléatoires
+function genererOfficiers(nombre) {
+    const caracteristiques = {
+        nez: ['Droit', 'Crochu', 'Plat'],
+        bouche: ['Fine', 'Large', 'Serrée'],
+        coiffure: ['Courte', 'Longue', 'Bald'],
+        yeux: ['Bleus', 'Verts', 'Marron'],
+        oreilles: ['Pointues', 'Rondes', 'Aplatées'],
+    };
+
+    for (let i = 0; i < nombre; i++) {
+        officiers.push({
+            nom: `Officier ${i + 1}`,
+            nez: caracteristiques.nez[Math.floor(Math.random() * 3)],
+            bouche: caracteristiques.bouche[Math.floor(Math.random() * 3)],
+            coiffure: caracteristiques.coiffure[Math.floor(Math.random() * 3)],
+            yeux: caracteristiques.yeux[Math.floor(Math.random() * 3)],
+            oreilles: caracteristiques.oreilles[Math.floor(Math.random() * 3)],
+            image: 'https://via.placeholder.com/100'  // Image par défaut (à remplacer par des images réelles)
+        });
     }
+}
 
-    // Fonction pour retourner au menu
-    function returnToMenu() {
-        document.getElementById("battleScreen").style.display = "none";
-        document.getElementById("menu").style.display = "block";
-    }
+// Fonction pour commencer une bataille
+function startBattle() {
+    afficher(`Bataille commencée! Préparez vos officiers.`);
+}
 
-    // Fonction pour afficher le résultat dans la console du jeu
-    function afficher(message) {
-        const output = document.getElementById("output");
-        output.innerHTML += `<p>${message}</p>`;
-        output.scrollTop = output.scrollHeight;  // Scroll vers le bas pour voir le dernier message
-    }
+// Fonction pour retourner au menu principal
+function returnToMenu() {
+    document.getElementById("campaignMenu").style.display = "none";
+    document.getElementById("menu").style.display = "block";
+}
 
-    // Fonction pour donner un ordre
-    function donnerOrdre(ordre) {
-        afficher(`Vous donnez l'ordre de ${ordre}.`);
-        let resultatJoueur = executerOrdre(ordre, "joueur");
-        let ordreEnnemi = choisirOrdreEnnemi();
-        let resultatEnnemi = executerOrdre(ordreEnnemi, "ennemi");
-
-        afficher(`L'ennemi a donné l'ordre de ${ordreEnnemi}.`);
-
-        // Résolution de la bataille pour ce tour
-        resoudreBataille(resultatJoueur, resultatEnnemi);
-    }
-
-    // Fonction pour exécuter l'ordre du joueur ou de l'ennemi
-    function executerOrdre(ordre, camp) {
-        let moral = camp === "joueur" ? moralJoueur : moralEnnemi;
-        let resultat;
-
-        switch (ordre) {
-            case "attaquer":
-                resultat = moral > 5 ? "attaque réussie" : "attaque échouée";
-                break;
-            case "défendre":
-                resultat = moral > 3 ? "défense solide" : "défense fragile";
-                break;
-            case "retraite":
-                resultat = moral < 3 ? "retraite désorganisée" : "retraite organisée";
-                break;
-            case "renforcer":
-                moral += 1;
-                resultat = "renforcement effectué";
-                break;
-            case "reconnaissance":
-                resultat = "reconnaissance en cours";
-                break;
-            default:
-                resultat = "ordre inconnu";
-        }
-
-        // Mettre à jour le moral
-        if (camp === "joueur") {
-            moralJoueur = moral;
-        } else {
-            moralEnnemi = moral;
-        }
-
-        afficher(`${camp === "joueur" ? "Vos troupes" : "Les troupes ennemies"} ${resultat}.`);
-        return resultat;
-    }
-
-    // Fonction pour choisir un ordre aléatoire pour l'ennemi
-    function choisirOrdreEnnemi() {
-        const ordres = ["attaquer", "défendre", "retraite", "renforcer", "reconnaissance"];
-        return ordres[Math.floor(Math.random() * ordres.length)];
-    }
-
-    // Fonction pour résoudre la bataille
-    function resoudreBataille(resultatJoueur, resultatEnnemi) {
-        // Simple résolution pour savoir qui prend l'avantage
-        if (resultatJoueur.includes("réussie") && !resultatEnnemi.includes("réussie")) {
-            afficher("Vos troupes prennent l'avantage !");
-            moralEnnemi -= 2;
-        } else if (!resultatJoueur.includes("réussie") && resultatEnnemi.includes("réussie")) {
-            afficher("L'ennemi prend l'avantage !");
-            moralJoueur -= 2;
-        } else {
-            afficher("Les deux camps sont à égalité.");
-        }
-
-        // Vérifier si la bataille est terminée
-        if (moralJoueur <= 0) {
-            afficher("Votre armée est en déroute. Vous avez perdu !");
-            terminerBataille(false);
-        } else if (moralEnnemi <= 0) {
-            afficher("L'ennemi est en déroute. Vous avez gagné !");
-            terminerBataille(true);
-        }
-    }
-
-    // Fonction pour terminer la bataille
-    function terminerBataille(victoire) {
-        if (victoire) {
-            afficher(`Vous avez remporté la bataille ${batailleEnCours}!`);
-        } else {
-            afficher(`Vous avez perdu la bataille ${batailleEnCours}.`);
-        }
-
-        batailleEnCours++;
-
-        // Si toutes les batailles de la campagne sont terminées
-        if (batailleEnCours > nombreBatailles) {
-            afficher("La campagne est terminée !");
-            desactiverBoutons();
-        } else {
-            // Réinitialiser les valeurs pour la prochaine bataille
-            moralJoueur = 5;
-            moralEnnemi = 5;
-            afficher(`Préparez-vous pour la bataille ${batailleEnCours}.`);
-        }
-    }
-
-    // Fonction pour désactiver les boutons à la fin de la bataille/campagne
-    function desactiverBoutons() {
-        const buttons = document.querySelectorAll(".order-buttons button");
-        buttons.forEach(button => button.disabled = true);
-        afficher("Campagne terminée. Retournez au menu principal pour rejouer.");
-        document.getElementById("orderButtons").style.display = "none";
-    }
-</script>
+// Fonction pour afficher des messages dans la console de jeu
+function afficher(message) {
+    const output = document.getElementById("output");
+    output.innerHTML += `<p>${message}</p>`;
+    output.scrollTop = output.scrollHeight;  // Scroll vers le bas pour voir le dernier message
+}
