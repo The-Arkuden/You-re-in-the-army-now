@@ -3,23 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You're in the army now!</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>You're in the Army Now!</title>
 </head>
 <body>
-    <div id="campaignMenu">
-        <h2>Campagne Militaire</h2>
-        <div id="summary">
-            <h3>Résumé de l'armée</h3>
-            <p id="moral">Moral : 5</p>
-            <p id="nombreHommes">Nombre d'hommes : 100</p>
+    <div id="game-container">
+        <h1>You're in the Army Now!</h1>
+        <div id="battlefield">
+            <pre id="battlefield-display"></pre>
         </div>
-        <h3>Officiers</h3>
-        <div id="officiers"></div>
-        <button onclick="startBattle()">Commencer la bataille</button>
-        <div id="output" class="output"></div>
+        <div id="controls">
+            <button id="attack-btn">Attaquer</button>
+            <button id="defend-btn">Défendre</button>
+            <button id="retreat-btn">Retraite</button>
+            <button id="next-turn-btn">Suivant</button>
+        </div>
+        <div id="status">
+            <h2>État de l'armée</h2>
+            <pre id="status-display"></pre>
+        </div>
+        <div id="end-game" style="display: none;">
+            <h2>Fin de la bataille</h2>
+            <p id="result"></p>
+            <button id="restart-btn">Recommencer</button>
+        </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
