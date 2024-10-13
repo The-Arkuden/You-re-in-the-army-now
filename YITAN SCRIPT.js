@@ -3,15 +3,13 @@ let moral = 5;
 let nombreHommes = 100;
 let officiers = [];
 
-// Fonction pour commencer la campagne militaire
-function startCampaign() {
-    document.getElementById("menu").style.display = "none";
-    document.getElementById("campaignMenu").style.display = "block";
+// Fonction pour démarrer la campagne (génération des officiers)
+document.addEventListener('DOMContentLoaded', function() {
     genererOfficiers(3);  // Génère 3 officiers au début
     mettreAJourResume();
-}
+});
 
-// Fonction pour mettre à jour le résumé
+// Fonction pour mettre à jour le résumé de l'armée
 function mettreAJourResume() {
     document.getElementById("moral").innerText = `Moral : ${moral}`;
     document.getElementById("nombreHommes").innerText = `Nombre d'hommes : ${nombreHommes}`;
@@ -62,12 +60,6 @@ function genererOfficiers(nombre) {
 // Fonction pour commencer une bataille
 function startBattle() {
     afficher(`Bataille commencée! Préparez vos officiers.`);
-}
-
-// Fonction pour retourner au menu principal
-function returnToMenu() {
-    document.getElementById("campaignMenu").style.display = "none";
-    document.getElementById("menu").style.display = "block";
 }
 
 // Fonction pour afficher des messages dans la console de jeu
