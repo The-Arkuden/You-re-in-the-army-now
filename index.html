@@ -7,25 +7,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="menu">
-        <h1>You're in the army now!</h1>
-        <button onclick="startCampaign()">Commencer la Campagne Militaire</button>
-    </div>
-
-    <div id="campaignMenu" style="display:none;">
+    <div id="campaignMenu">
         <h2>Campagne Militaire</h2>
         <div id="summary">
-            <h3>Résumé</h3>
+            <h3>Résumé de l'armée</h3>
             <p id="moral">Moral : 5</p>
             <p id="nombreHommes">Nombre d'hommes : 100</p>
         </div>
         <h3>Officiers</h3>
         <div id="officiers"></div>
         <button onclick="startBattle()">Commencer la bataille</button>
-        <button onclick="returnToMenu()">Retour au menu</button>
+        <div id="output" class="output"></div>
     </div>
-
-    <div id="output" class="output"></div>
 
     <script src="script.js"></script>
 </body>
